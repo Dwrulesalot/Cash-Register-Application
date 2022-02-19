@@ -6,13 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HistoryActivity">
 
+    <!--removed app:layout_constraintBottom_toTopOf="@id/guideline2"-->
     <TextView
         android:id="@+id/historyProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/purple_200"
+        android:textSize="30sp"
         android:text="Product Type"
-        app:layout_constraintBottom_toTopOf="@id/guideline2"
+
         app:layout_constraintEnd_toEndOf="@id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
@@ -30,8 +32,10 @@
         android:id="@+id/historyTotalCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:text="Total Cost"
+
         app:layout_constraintBottom_toTopOf="@id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline1"
@@ -50,12 +54,12 @@
         android:id="@+id/historyQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"
 
         android:text="Quantity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline2"></TextView>
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        ></TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

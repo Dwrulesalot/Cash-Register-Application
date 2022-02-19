@@ -8,7 +8,7 @@ public class HistoryManager {
 
 
 
-    public HistoryManager() {
-
+    public void addHistory(History h){
+        purchaseHistory.add(h);
     }
 }

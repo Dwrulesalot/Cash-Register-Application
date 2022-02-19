@@ -47,8 +47,7 @@ public class MyApp extends Application {
         Log.d("Ass2", "MyApp.savePurchase()"+productName+String.valueOf(totalCost)+String.valueOf(quantity)+String.valueOf(date));
         History history = new History(productName, totalCost, quantity, date);
 
-        historyManager.purchaseHistory.add(history);
-
+        historyManager.addHistory(history);
 
     }
 }

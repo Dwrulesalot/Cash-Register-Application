@@ -6,13 +6,15 @@
     android:weightSum="3"
     >
 
-    <!--do I need to change this from a linear layout to constraint layout?-->
+    <!-- I need to change this from a linear layout to constraint layout-->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="@integer/material_motion_duration_long_2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/purchaseList_productName"
