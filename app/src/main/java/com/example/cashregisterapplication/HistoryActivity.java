@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -26,6 +27,8 @@ public class HistoryActivity extends AppCompatActivity {
 
 
     HistoryManager historyManager;
+
+    ActivityResultLauncher<Intent> addTaskActivityReturnLauncher;
 
 
 
@@ -48,10 +51,28 @@ public class HistoryActivity extends AppCompatActivity {
         purchaseList.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent purchaseDetailsIntent = new Intent(getApplicationContext(), PurchaseDetailsActivity.class);
-                startActivity(purchaseDetailsIntent);
+
+                //todo open up new PurchaseDetailsActivity page and pass the product, total, date of purchase
+                Intent addNewTaskIntent = new Intent(getApplicationContext(), PurchaseDetailsActivity.class);
+                addTaskActivityReturnLauncher.launch(addNewTaskIntent);
+
             }
         });
+
+
+        /*
+        purchaseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                History listItem = (History) purchaseList.getItemAtPosition(position)
+                //Stock listItem = (Stock) purchaseList.getItemAtPosition(position);
+
+                //ListItemClicked(listItem);
+
+            }
+        });
+
+         */
 
     }
 
