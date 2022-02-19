@@ -6,4 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".PurchaseDetailsActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5"
+        />
+
+    <TextView
+        android:id="@+id/detailsProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:text="Product Name: "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontalGuideline1"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <TextView
+        android:id="@+id/detailsPurchasePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:text="Product Name: "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailsProductName"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <TextView
+        android:id="@+id/detailsPurchaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:text="Purchase Date: "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailsPurchasePrice"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

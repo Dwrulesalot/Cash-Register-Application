@@ -27,9 +27,11 @@ public class ManagerPanelActivity extends AppCompatActivity {
                 //where do I grab the adapters from?
                 //adapter.notifyDataSetChanged();
 
-
             }
         });
+
+
+
         restockBtn = findViewById(R.id.restockButton);
         restockBtn.setOnClickListener(new View.OnClickListener() {
             @Override

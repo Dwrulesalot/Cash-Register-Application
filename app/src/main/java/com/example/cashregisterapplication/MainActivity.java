@@ -2,6 +2,7 @@ package com.example.cashregisterapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
     Stock shoes;
     Stock hats;
 
-    ArrayList<Stock> currentStock = new ArrayList<>();
+    ArrayList<Stock> currentStock;
 
     //call from MyApp?
-    StockAdapter adapter;
-    //todo HistoryAdapter - needs to also get/set stock objects
+    StockAdapter stockAdapter;
+    //HistoryRecyclerAdapter historyAdapter = ((MyApp)getApplication()).historyAdapter;
 
     ListView purchaseList;
 
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     Button managerBtn;
 
     AlertDialog.Builder builder;
+
+    //HistoryManager historyManager = ((MyApp)getApplication()).historyManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +79,13 @@ public class MainActivity extends AppCompatActivity {
         }
         });
 
-        //do I call from MyApp?
-        purchaseList = (ListView) findViewById(R.id.purchaseList);
 
-        adapter = new StockAdapter(currentStock, getApplicationContext());
-        purchaseList.setAdapter(adapter);
+        purchaseList = (ListView) findViewById(R.id.purchaseList);
+        //do I call from MyApp so it's using the same adapter as restock?
+        stockAdapter = new StockAdapter(currentStock, getApplicationContext());
+        purchaseList.setAdapter(stockAdapter);
+
+
 
 
 
@@ -94,13 +99,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         buyBtn = (Button) findViewById(R.id.buyButton);
         buyBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 buyClicked();
-                //call from MyApp?
-                adapter.notifyDataSetChanged();
+                //call from MyApp? - change name to stockAdapter
+                stockAdapter.notifyDataSetChanged();
+                //where does this intent get made? - historyActivity/MyApp I think?
+                //historyAdapter.notifyDataSetChanged();
 
             }
         });
@@ -112,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent managerPanel = new Intent(MainActivity.this, ManagerPanelActivity.class);
                 startActivity(managerPanel);
 
-                //call from MyApp?
-                adapter.notifyDataSetChanged();
+                //call from MyApp? - this needed here?
+                stockAdapter.notifyDataSetChanged();
 
             }
         });

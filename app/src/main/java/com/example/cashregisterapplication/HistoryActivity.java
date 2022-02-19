@@ -1,44 +1,61 @@
 package com.example.cashregisterapplication;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.Date;
 
 public class HistoryActivity extends AppCompatActivity {
 
     //maybe in future add restock history too
     RecyclerView purchaseList;
 
-    //do I move this elsewhere? - HistoryAdapter? HistoryManager?
-    TextView productName;
-    TextView quantity;
-    TextView total;
+    HistoryRecyclerAdapter historyAdapter;
+
+
+    HistoryManager historyManager;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Is this content view correct? - HistoryAdapter?
-        // will this actually show all items in the recycler view - HistoryAdapter? HistoryManager?
         setContentView(R.layout.activity_history);
 
-        //do I move this elsewhere? - HistoryAdapter? HistoryManager?
-        productName = findViewById(R.id.historyProductName);
-        quantity = findViewById(R.id.historyQuantity);
-        total = findViewById(R.id.historyTotalCost);
-
         purchaseList = findViewById(R.id.historyRecyclerView);
+        historyManager  = ((MyApp)getApplication()).historyManager;
+
+
+        //adapter to grabs historyManager.(ArrayList<History>)purchaseHistory from MyApp
+        historyAdapter = new HistoryRecyclerAdapter(historyManager.purchaseHistory, this);
+        purchaseList.setAdapter(historyAdapter);
+        purchaseList.setLayoutManager(new LinearLayoutManager(this));
+
+
         //need onclick for items in recyclerView
         purchaseList.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent purchaseDetailsIntent = new Intent();
+                Intent purchaseDetailsIntent = new Intent(getApplicationContext(), PurchaseDetailsActivity.class);
+                startActivity(purchaseDetailsIntent);
             }
         });
+
+    }
+
+
 /* this is the base adapter version
 
         purchaseList = (ListView) findViewById(R.id.purchaseList);
@@ -59,7 +76,13 @@ public class HistoryActivity extends AppCompatActivity {
         });
  */
 
+    //intent needed so it catches everytime purchase is made
+    //is this intent needed here? or in MyApp.savePurchase <-- think myApp most likely
+    public void saveToHistory(){
+
+
     }
+
 
 
 

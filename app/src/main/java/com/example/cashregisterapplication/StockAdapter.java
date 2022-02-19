@@ -63,19 +63,5 @@ Context context;
 
         return view;
 
-        /* from teacher's example
-        view = LayoutInflater.from(context).inflate(R.layout.stock_base_adapter_row_layout,null);
-
-        TextView productName = view.findViewById(R.id.purchaseList_productName);
-        TextView price = view.findViewById(R.id.purchaseList_price);
-        TextView quantity = view.findViewById(R.id.purchaseList_quantity);
-
-
-        productName.setText(String.valueOf(listOfStock.get(i).productName));
-        price.setText(String.valueOf(listOfStock.get(i).itemPrice));
-        quantity.setText(String.valueOf(listOfStock.get(i).itemQuantity));
-
-        return view;
-        */
     }
 }
