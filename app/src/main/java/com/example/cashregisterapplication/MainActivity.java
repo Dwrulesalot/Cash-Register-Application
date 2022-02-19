@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    MyApp myApp;
+
     //fixing decimal rounding error
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -28,17 +30,15 @@ public class MainActivity extends AppCompatActivity {
     TextView product;
     TextView total;
 
-
-
-    //should move these else where and just call them here
     Stock pants;
     Stock shoes;
     Stock hats;
 
     ArrayList<Stock> currentStock = new ArrayList<>();
 
-    //todo HistoryAdapter - needs to also get/set stock objects
+    //call from MyApp?
     StockAdapter adapter;
+    //todo HistoryAdapter - needs to also get/set stock objects
 
     ListView purchaseList;
 
@@ -76,14 +76,12 @@ public class MainActivity extends AppCompatActivity {
         }
         });
 
-
+        //do I call from MyApp?
         purchaseList = (ListView) findViewById(R.id.purchaseList);
-
 
         adapter = new StockAdapter(currentStock, getApplicationContext());
         purchaseList.setAdapter(adapter);
 
-        //need to update list view when there are changes
 
 
         purchaseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
         buyBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 buyClicked();
+                //call from MyApp?
                 adapter.notifyDataSetChanged();
+
             }
         });
 
@@ -112,8 +112,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent managerPanel = new Intent(MainActivity.this, ManagerPanelActivity.class);
                 startActivity(managerPanel);
 
-
+                //call from MyApp?
                 adapter.notifyDataSetChanged();
+
             }
         });
 
@@ -130,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
             if(product.getText()==pants.productName && !(pants.itemQuantity < Integer.parseInt((String) quantity.getText()))){
                 pants.itemQuantity -= Integer.parseInt((String) quantity.getText());
 
+                //adds purchase to historyManager with savePurchase method
+                ((MyApp)getApplication()).savePurchase(pants.productName, Double.parseDouble((String) total.getText()), Integer.parseInt((String) quantity.getText()));
+
                 builder.setTitle("Thank you for your purchase!");
                 builder.setMessage("Your purchase is: "+(String) quantity.getText()+" Pants. Your Total is: $"+(String) total.getText());
                 builder.setCancelable(true);
@@ -141,6 +145,9 @@ public class MainActivity extends AppCompatActivity {
             else if(product.getText()==shoes.productName && !(shoes.itemQuantity < Integer.parseInt((String) quantity.getText()) )){
                 shoes.itemQuantity -= Integer.parseInt((String) quantity.getText());
 
+                //adds purchase to historyManager with savePurchase method
+                ((MyApp)getApplication()).savePurchase(shoes.productName, Double.parseDouble((String) total.getText()), Integer.parseInt((String) quantity.getText()));
+
                 builder.setTitle("Thank you for your purchase!");
                 builder.setMessage("Your purchase is: "+(String) quantity.getText()+" Shoes. Your Total is: $"+(String) total.getText());
                 builder.setCancelable(true);
@@ -150,6 +157,9 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(product.getText()==hats.productName && !(hats.itemQuantity < Integer.parseInt((String) quantity.getText()) )) {
                 hats.itemQuantity -= Integer.parseInt((String) quantity.getText());
+
+                //adds purchase to historyManager with savePurchase method
+                ((MyApp)getApplication()).savePurchase(hats.productName, Double.parseDouble((String) total.getText()), Integer.parseInt((String) quantity.getText()));
 
                 builder.setTitle("Thank you for your purchase!");
                 builder.setMessage("Your purchase is: "+(String) quantity.getText()+" Hats. Your Total is: $"+(String) total.getText());

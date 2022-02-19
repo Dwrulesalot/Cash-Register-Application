@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import java.text.SimpleDateFormat;
+
 public class PurchaseDetailsActivity extends AppCompatActivity {
+
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

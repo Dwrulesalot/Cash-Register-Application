@@ -1,8 +1,11 @@
 package com.example.cashregisterapplication;
 
 import android.app.Application;
+import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MyApp extends Application {
 
@@ -12,7 +15,10 @@ public class MyApp extends Application {
 
     //Now all activities should access the same data without referring to mainActivity
     ArrayList<Stock> currentStock;
-    ArrayList<Stock> purchaseHistory;
+
+    HistoryManager historyManager = new HistoryManager();
+
+
 
     public MyApp() {
 
@@ -26,8 +32,22 @@ public class MyApp extends Application {
         currentStock.add(shoes);
         currentStock.add(hats);
 
-        purchaseHistory = new ArrayList<>();
 
+
+
+
+
+    }
+
+    //creates a history object and adds it to historyManager's array purchaseHistory
+    public void savePurchase(String productName, double totalCost, int quantity){
+
+
+        Date date = new Date();
+        Log.d("Ass2", "MyApp.savePurchase()"+productName+String.valueOf(totalCost)+String.valueOf(quantity)+String.valueOf(date));
+        History history = new History(productName, totalCost, quantity, date);
+
+        historyManager.purchaseHistory.add(history);
 
 
     }

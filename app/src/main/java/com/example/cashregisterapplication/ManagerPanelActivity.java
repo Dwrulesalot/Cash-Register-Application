@@ -21,11 +21,12 @@ public class ManagerPanelActivity extends AppCompatActivity {
         historyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* todo history activity page
-                Intent managerPanel = new Intent(MainActivity.this, ManagerPanelActivity.class);
+
+                Intent managerPanel = new Intent(ManagerPanelActivity.this, HistoryActivity.class);
                 startActivity(managerPanel);
-                adapter.notifyDataSetChanged();
-                */
+                //where do I grab the adapters from?
+                //adapter.notifyDataSetChanged();
+
 
             }
         });
@@ -33,11 +34,12 @@ public class ManagerPanelActivity extends AppCompatActivity {
         restockBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* todo restock activity page
-                Intent managerPanel = new Intent(MainActivity.this, ManagerPanelActivity.class);
+
+                Intent managerPanel = new Intent(ManagerPanelActivity.this, RestockActivity.class);
                 startActivity(managerPanel);
-                adapter.notifyDataSetChanged();
-                */
+                //where do I grab the adapters from?
+                //adapter.notifyDataSetChanged();
+
             }
         });
     }
