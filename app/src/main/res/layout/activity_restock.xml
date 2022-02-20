@@ -6,8 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".RestockActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".3"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".7"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".15"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".3"
+        />
+
+    <EditText
+        android:id="@+id/restockQuantityUserInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Quantity Purchased"
+
+        app:layout_constraintLeft_toLeftOf="@id/verticalGuideline1"
+        app:layout_constraintRight_toRightOf="@id/verticalGuideline2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline1"
+        />
+
+    <Button
+        android:id="@+id/restockOkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        app:layout_constraintLeft_toLeftOf="@id/verticalGuideline1"
+        app:layout_constraintTop_toTopOf="@id/horizontalGuideline1"
+        app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+
+        app:layout_constraintRight_toLeftOf="@id/restockCancelButton"
+        />
+    <Button
+        android:id="@+id/restockCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintRight_toRightOf="@id/verticalGuideline2"
+        app:layout_constraintTop_toTopOf="@id/horizontalGuideline1"
+        app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+
+        app:layout_constraintLeft_toRightOf="@id/restockOkButton"
+        />
+
     <!-- todo ListView of current Stock by adapter exactly like previously -->
-    <!-- is this context correct?-->
+    <!-- is this context correct?
+    I want this listview to be the same in two places-->
     <ListView
         tools:context=".RestockActivity"
         android:id="@+id/purchaseList"
@@ -15,6 +88,6 @@
         android:layout_height="wrap_content"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/horizontalGuideline2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
