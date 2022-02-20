@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     // Builder with a display message and savePurchase for the history page
     private void buyClicked() {
         if (((String) product.getText()).equals("Product Type") || ((String) quantity.getText()).equals("Quantity")){
-            Toast.makeText(getApplicationContext(), "All fields are required!!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "All fields are required!!!", Toast.LENGTH_SHORT).show();
         }
         else {
             //checks product name and that buy amount isn't larger than current stock
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
             }
             else{
-                Toast.makeText(getApplicationContext(), "Not Enough in Stock!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Not Enough in Stock!!!", Toast.LENGTH_SHORT).show();
             }
 
             clear();
@@ -187,6 +187,10 @@ public class MainActivity extends AppCompatActivity {
         if(!((String) quantity.getText()).equals("Quantity")){
             String temp = (String) quantity.getText();
             calculateTotalPrice(Integer.parseInt((String) quantity.getText()));
+        }
+        //else to catch when no stock in an item
+        else{
+            calculateTotalPrice(0);
         }
 
     }
@@ -225,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //still calculates total
         if(stockCheck){
-            Toast.makeText(getApplicationContext(), "Not enough Quantity in stock!!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Not enough Quantity in stock!!!", Toast.LENGTH_SHORT).show();
         }
 
     }
