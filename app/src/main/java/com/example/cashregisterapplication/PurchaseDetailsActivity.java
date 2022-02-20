@@ -2,14 +2,13 @@ package com.example.cashregisterapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
 public class PurchaseDetailsActivity extends AppCompatActivity {
-
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     TextView product;
     TextView total;
@@ -24,6 +23,8 @@ public class PurchaseDetailsActivity extends AppCompatActivity {
         total = (TextView) findViewById(R.id.detailsPurchasePrice);
         date = (TextView) findViewById(R.id.detailsPurchaseDate);
 
+        product.setText("Product: "+getIntent().getStringExtra("product"));
+        total.setText("Total Cost: $"+getIntent().getStringExtra("total"));
+        date.setText("Date: "+getIntent().getStringExtra("date"));
     }
-
 }

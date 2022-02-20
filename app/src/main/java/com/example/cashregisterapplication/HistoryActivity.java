@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import java.util.Date;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity{
 
     //maybe in future add restock history too
     RecyclerView purchaseList;
@@ -27,36 +27,18 @@ public class HistoryActivity extends AppCompatActivity {
 
     HistoryManager historyManager;
 
-    ActivityResultLauncher<Intent> addTaskActivityReturnLauncher;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        purchaseList = findViewById(R.id.historyRecyclerView);
+        purchaseList = (RecyclerView) findViewById(R.id.historyRecyclerView);
         historyManager  = ((MyApp)getApplication()).historyManager;
 
         //adapter to grabs historyManager.(ArrayList<History>)purchaseHistory from MyApp
         historyAdapter = new HistoryRecyclerAdapter(historyManager.purchaseHistory, this);
         purchaseList.setAdapter(historyAdapter);
         purchaseList.setLayoutManager(new LinearLayoutManager(this));
-
-
-        //need onclick for items in recyclerView
-        purchaseList.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-
-                //todo open up new PurchaseDetailsActivity page and pass the product, total, date of purchase
-                Intent addNewTaskIntent = new Intent(getApplicationContext(), PurchaseDetailsActivity.class);
-                startActivity(addNewTaskIntent);
-                //addTaskActivityReturnLauncher.launch(addNewTaskIntent);
-
-            }
-        });
-
 
     }
 

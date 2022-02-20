@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     MyApp myApp;
-
     //fixing decimal rounding error
     private static final DecimalFormat df = new DecimalFormat("0.00");
 

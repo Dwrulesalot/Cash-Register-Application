@@ -1,6 +1,7 @@
 package com.example.cashregisterapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
         holder.productName.setText(historyArrayList.get(position).productName);
         holder.quantity.setText(String.valueOf(historyArrayList.get(position).quantity));
         holder.total.setText(String.valueOf(historyArrayList.get(position).totalCost));
+
     }
 
     @Override
@@ -41,7 +43,7 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
     }
 
 
-    public static class HistoryViewHolder extends RecyclerView.ViewHolder{
+    public class HistoryViewHolder extends RecyclerView.ViewHolder{
 
     TextView productName;
     TextView quantity;
@@ -52,6 +54,25 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
             productName = itemView.findViewById(R.id.historyProductName);
             quantity = itemView.findViewById(R.id.historyQuantity);
             total = itemView.findViewById(R.id.historyTotalCost);
+
+
+            //opening Details page and passing info
+            itemView.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view){
+                    int position = getAdapterPosition();
+                    Context c = view.getContext();
+
+                    Intent detailsInfoIntent = new Intent(c, PurchaseDetailsActivity.class);
+                    detailsInfoIntent.putExtra("product", productName.getText());
+                    detailsInfoIntent.putExtra("total", total.getText());
+                    //work?
+                    detailsInfoIntent.putExtra("date", String.valueOf(historyArrayList.get(position).getPurchaseDate()));
+
+                    c.startActivity(detailsInfoIntent);
+            }
+            });
         }
 
         public TextView getProductName() {
@@ -66,7 +87,5 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
             return total;
         }
     }
-
-
 
 }

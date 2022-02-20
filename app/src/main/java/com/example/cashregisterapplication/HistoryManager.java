@@ -13,4 +13,5 @@ public class HistoryManager {
     public void addHistory(History h){
         purchaseHistory.add(h);
     }
+
 }
