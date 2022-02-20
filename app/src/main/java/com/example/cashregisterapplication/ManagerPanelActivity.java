@@ -24,13 +24,9 @@ public class ManagerPanelActivity extends AppCompatActivity {
 
                 Intent managerPanel = new Intent(ManagerPanelActivity.this, HistoryActivity.class);
                 startActivity(managerPanel);
-                //where do I grab the adapters from?
-                //adapter.notifyDataSetChanged();
 
             }
         });
-
-
 
         restockBtn = findViewById(R.id.restockButton);
         restockBtn.setOnClickListener(new View.OnClickListener() {
@@ -39,8 +35,6 @@ public class ManagerPanelActivity extends AppCompatActivity {
 
                 Intent managerPanel = new Intent(ManagerPanelActivity.this, RestockActivity.class);
                 startActivity(managerPanel);
-                //where do I grab the adapters from?
-                //adapter.notifyDataSetChanged();
 
             }
         });

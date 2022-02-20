@@ -81,13 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         purchaseList = (ListView) findViewById(R.id.purchaseList);
-        //do I call from MyApp so it's using the same adapter as restock?
+
         stockAdapter = new StockAdapter(currentStock, getApplicationContext());
         purchaseList.setAdapter(stockAdapter);
-
-
-
-
 
         purchaseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -103,10 +99,7 @@ public class MainActivity extends AppCompatActivity {
         buyBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 buyClicked();
-                //call from MyApp? - change name to stockAdapter
                 stockAdapter.notifyDataSetChanged();
-                //where does this intent get made? - historyActivity/MyApp I think?
-                //historyAdapter.notifyDataSetChanged();
 
             }
         });
@@ -117,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent managerPanel = new Intent(MainActivity.this, ManagerPanelActivity.class);
                 startActivity(managerPanel);
-
-                //call from MyApp? - this needed here?
                 stockAdapter.notifyDataSetChanged();
 
             }
@@ -127,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
         builder = new AlertDialog.Builder(this);
     }
 
-    //upgrade idea: make this work for any product
+    //handler for Stock validation/update
+    // Builder with a display message and savePurchase for the history page
     private void buyClicked() {
         if (((String) product.getText()).equals("Product Type") || ((String) quantity.getText()).equals("Quantity")){
             Toast.makeText(getApplicationContext(), "All fields are required!!!", Toast.LENGTH_LONG).show();
@@ -200,14 +192,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //calculates total from selected product's price * given quantity and updates totalTextView
-    //toast if the user selects a quantity which is more that the available quantity in stock - todo
+
     public void calculateTotalPrice(int q){
 
         double t=0.0;
         boolean stockCheck=false;
 
-        //if the textView isn't in it's default aka a product is clicked will recalculate the price
+
         if (((String) product.getText()).equals("Product Type")){
             Toast.makeText(getApplicationContext(), "Please Select a Product for an updated total.", Toast.LENGTH_SHORT).show();
         }
@@ -233,7 +224,6 @@ public class MainActivity extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(), "Error Calculating Total", Toast.LENGTH_LONG).show();
         }
-
         //still calculates total
         if(stockCheck){
             Toast.makeText(getApplicationContext(), "Not enough Quantity in stock!!!", Toast.LENGTH_LONG).show();

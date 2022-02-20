@@ -25,11 +25,9 @@ public class HistoryActivity extends AppCompatActivity {
 
     HistoryRecyclerAdapter historyAdapter;
 
-
     HistoryManager historyManager;
 
     ActivityResultLauncher<Intent> addTaskActivityReturnLauncher;
-
 
 
     @Override
@@ -39,7 +37,6 @@ public class HistoryActivity extends AppCompatActivity {
 
         purchaseList = findViewById(R.id.historyRecyclerView);
         historyManager  = ((MyApp)getApplication()).historyManager;
-
 
         //adapter to grabs historyManager.(ArrayList<History>)purchaseHistory from MyApp
         historyAdapter = new HistoryRecyclerAdapter(historyManager.purchaseHistory, this);
@@ -54,59 +51,13 @@ public class HistoryActivity extends AppCompatActivity {
 
                 //todo open up new PurchaseDetailsActivity page and pass the product, total, date of purchase
                 Intent addNewTaskIntent = new Intent(getApplicationContext(), PurchaseDetailsActivity.class);
-                addTaskActivityReturnLauncher.launch(addNewTaskIntent);
+                startActivity(addNewTaskIntent);
+                //addTaskActivityReturnLauncher.launch(addNewTaskIntent);
 
             }
         });
-
-
-        /*
-        purchaseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                History listItem = (History) purchaseList.getItemAtPosition(position)
-                //Stock listItem = (Stock) purchaseList.getItemAtPosition(position);
-
-                //ListItemClicked(listItem);
-
-            }
-        });
-
-         */
-
-    }
-
-
-/* this is the base adapter version
-
-        purchaseList = (ListView) findViewById(R.id.purchaseList);
-
-        adapter = new StockAdapter(currentStock, getApplicationContext());
-        purchaseList.setAdapter(adapter);
-
-
-
-        purchaseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Stock listItem = (Stock) purchaseList.getItemAtPosition(position);
-
-                ListItemClicked(listItem);
-
-            }
-        });
- */
-
-    //intent needed so it catches everytime purchase is made
-    //is this intent needed here? or in MyApp.savePurchase <-- think myApp most likely
-    public void saveToHistory(){
 
 
     }
-
-
-
-
-
 
 }

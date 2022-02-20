@@ -41,14 +41,10 @@ Context context;
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
-
-        //inflates the layout for each list row
         if(view ==null){
             view = LayoutInflater.from(context).
                     inflate(R.layout.stock_base_adapter_row_layout, viewGroup, false);
         }
-
         Stock currentItem = (Stock) getItem(i);
 
         // gets the TextViews
@@ -62,6 +58,5 @@ Context context;
         quantity.setText("Quantity: "+String.valueOf(listOfStock.get(i).itemQuantity));
 
         return view;
-
     }
 }

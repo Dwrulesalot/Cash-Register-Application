@@ -26,5 +26,4 @@ public class PurchaseDetailsActivity extends AppCompatActivity {
 
     }
 
-
 }
