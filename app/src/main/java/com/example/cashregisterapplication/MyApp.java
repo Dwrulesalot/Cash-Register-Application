@@ -35,6 +35,8 @@ public class MyApp extends Application {
         currentStock.add(hats);
 
     }
+
+    //todo do I need to make this update quantity for both mainActivity and restockActivity adapters?
     //creates a history object and adds it to historyManager's array purchaseHistory
     public void savePurchase(String productName, double totalCost, int quantity){
 
@@ -44,4 +46,6 @@ public class MyApp extends Application {
 
         historyManager.addHistory(history);
     }
+
+
 }

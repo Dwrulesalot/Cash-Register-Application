@@ -48,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter Quantity Purchased"
+        android:inputType="number"
 
         app:layout_constraintLeft_toLeftOf="@id/verticalGuideline1"
         app:layout_constraintRight_toRightOf="@id/verticalGuideline2"
@@ -84,7 +85,7 @@
     <ListView
         tools:context=".RestockActivity"
         android:id="@+id/purchaseList"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         app:layout_constraintEnd_toEndOf="parent"

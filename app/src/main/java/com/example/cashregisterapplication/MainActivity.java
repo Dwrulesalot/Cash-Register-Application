@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Stock> currentStock;
 
-    //call from MyApp?
     StockAdapter stockAdapter;
-    //HistoryRecyclerAdapter historyAdapter = ((MyApp)getApplication()).historyAdapter;
 
     ListView purchaseList;
 
@@ -47,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
     Button managerBtn;
 
     AlertDialog.Builder builder;
-
-    //HistoryManager historyManager = ((MyApp)getApplication()).historyManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
